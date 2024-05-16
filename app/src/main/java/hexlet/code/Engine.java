@@ -13,13 +13,14 @@ public class Engine {
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
         System.out.println("0 - Exit");
         System.out.printf("Your choice: ");
     }
 
     static int choiceGame() {
         String inputFromKeyboard = "";
-        while (!inputFromKeyboard.matches("[0-3]")) {
+        while (!inputFromKeyboard.matches("[0-4]")) {
             inputFromKeyboard = readFromKeyboard.nextLine();
         }
 //        readFromKeyboard.close();

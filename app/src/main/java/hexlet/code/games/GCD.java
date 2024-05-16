@@ -1,22 +1,20 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
 import static hexlet.code.Cli.getNameUser;
 import static hexlet.code.Engine.getAnswer;
+import static hexlet.code.games.Calc.numericsRandom;
 
-public class Calc {
-    public static Random numericsRandom = new Random();
-    public static void gameCalc() {
+public class GCD {
+    public static void gameGCD() {
         String nameUser = getNameUser();
-        // RND block
-        int a = numericsRandom.nextInt(10);
-        int b = numericsRandom.nextInt(10);
-//        int operationNumber = numericsRandom.nextInt(3);
+        System.out.println("Find the greatest common divisor of given numbers.");
 // Question No 1
-        System.out.println("What is the result of the expression?");
-        System.out.println("Question: " + a + " * " + b);
-        int questResult = a * b;
+        // RND block
+        int a = 1 + numericsRandom.nextInt(100);
+        int b = 1 + numericsRandom.nextInt(100);
+        //
+        System.out.println("Question: " + a + " " + b);
+        int questResult = findCDG(a, b);
         System.out.printf("Your answer: ");
         int yourAnswer = Integer.parseInt(getAnswer());
         if (!(yourAnswer == questResult)) {
@@ -28,11 +26,12 @@ public class Calc {
             System.out.println("Correct!");
         }
 // Question No 2
-        a = numericsRandom.nextInt(10);
-        b = numericsRandom.nextInt(10);
-        System.out.println("What is the result of the expression?");
-        System.out.println("Question: " + a + " + " + b);
-        questResult = a + b;
+        // RND block
+        a = 1 + numericsRandom.nextInt(100);
+        b = 1 + numericsRandom.nextInt(100);
+        //
+        System.out.println("Question: " + a + " " + b);
+        questResult = findCDG(a, b);
         System.out.printf("Your answer: ");
         yourAnswer = Integer.parseInt(getAnswer());
         if (!(yourAnswer == questResult)) {
@@ -44,11 +43,12 @@ public class Calc {
             System.out.println("Correct!");
         }
 // Question No 3
-        a = numericsRandom.nextInt(10);
-        b = numericsRandom.nextInt(10);
-        System.out.println("What is the result of the expression?");
-        System.out.println("Question: " + a + " - " + b);
-        questResult = a - b;
+        // RND block
+        a = 1 + numericsRandom.nextInt(100);
+        b = 1 + numericsRandom.nextInt(100);
+        //
+        System.out.println("Question: " + a + " " + b);
+        questResult = findCDG(a, b);
         System.out.printf("Your answer: ");
         yourAnswer = Integer.parseInt(getAnswer());
         if (!(yourAnswer == questResult)) {
@@ -59,6 +59,16 @@ public class Calc {
         } else {
             System.out.println("Correct!");
         }
-        System.out.println("Congratulations, " + nameUser + "!");
+    }
+
+    public static int findCDG(int a, int b) {
+        while (a != b) {
+            if (a > b) {
+                a = a - b;
+            } else {
+                b = b - a;
+            }
+        }
+        return b;
     }
 }
