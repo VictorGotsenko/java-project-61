@@ -1,64 +1,32 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
 import static hexlet.code.Cli.getNameUser;
+import static hexlet.code.Engine.checkAnswerNumeric;
 import static hexlet.code.Engine.getAnswer;
+import static hexlet.code.Engine.randomGenerator;
 
 public class Calc {
-    public static Random numericsRandom = new Random();
     public static void gameCalc() {
         String nameUser = getNameUser();
-        // RND block
-        int a = numericsRandom.nextInt(10);
-        int b = numericsRandom.nextInt(10);
-//        int operationNumber = numericsRandom.nextInt(3);
+        int rangeGenerateNumbers = 10;
+
+        System.out.println("What is the result of the expression?");
 // Question No 1
-        System.out.println("What is the result of the expression?");
-        System.out.println("Question: " + a + " * " + b);
-        int questResult = a * b;
-        System.out.printf("Your answer: ");
-        int yourAnswer = Integer.parseInt(getAnswer());
-        if (!(yourAnswer == questResult)) {
-            System.out.println("\'" + yourAnswer + "\' is wrong answer ;(. Correct answer was \'"
-                    + questResult + "\'.");
-            System.out.println("Let's try again," + nameUser);
-            return;
-        } else {
-            System.out.println("Correct!");
-        }
+        int[] dim = randomGenerator(rangeGenerateNumbers);
+        System.out.println("Question: " + dim[0] + " * " + dim[1]);
+        System.out.print("Your answer: ");
+        checkAnswerNumeric((dim[0] * dim[1]), Integer.parseInt(getAnswer()));
 // Question No 2
-        a = numericsRandom.nextInt(10);
-        b = numericsRandom.nextInt(10);
-        System.out.println("What is the result of the expression?");
-        System.out.println("Question: " + a + " + " + b);
-        questResult = a + b;
-        System.out.printf("Your answer: ");
-        yourAnswer = Integer.parseInt(getAnswer());
-        if (!(yourAnswer == questResult)) {
-            System.out.println("\'" + yourAnswer + "\' is wrong answer ;(. Correct answer was \'"
-                    + questResult + "\'.");
-            System.out.println("Let's try again," + nameUser);
-            return;
-        } else {
-            System.out.println("Correct!");
-        }
+        dim = randomGenerator(rangeGenerateNumbers);
+        System.out.println("Question: " + dim[0] + " + " + dim[1]);
+        System.out.print("Your answer: ");
+        checkAnswerNumeric((dim[0] + dim[1]), Integer.parseInt(getAnswer()));
+
 // Question No 3
-        a = numericsRandom.nextInt(10);
-        b = numericsRandom.nextInt(10);
-        System.out.println("What is the result of the expression?");
-        System.out.println("Question: " + a + " - " + b);
-        questResult = a - b;
-        System.out.printf("Your answer: ");
-        yourAnswer = Integer.parseInt(getAnswer());
-        if (!(yourAnswer == questResult)) {
-            System.out.println("\'" + yourAnswer + "\' is wrong answer ;(. Correct answer was \'"
-                    + questResult + "\'.");
-            System.out.println("Let's try again," + nameUser);
-            return;
-        } else {
-            System.out.println("Correct!");
-        }
+        dim = randomGenerator(rangeGenerateNumbers);
+        System.out.println("Question: " + dim[0] + " - " + dim[1]);
+        System.out.print("Your answer: ");
+        checkAnswerNumeric((dim[0] - dim[1]), Integer.parseInt(getAnswer()));
         System.out.println("Congratulations, " + nameUser + "!");
     }
 }

@@ -1,9 +1,14 @@
 package hexlet.code;
 
+import java.util.Random;
 import java.util.Scanner;
 
+import static hexlet.code.Cli.getNameUser;
+
 public class Engine {
-    public static Scanner readFromKeyboard = new Scanner(System.in);
+    static Scanner readFromKeyboard = new Scanner(System.in);
+    public static Random numericsRandom = new Random();
+
     static void welcomeGame() {
         System.out.println("Welcome to the Brain Games!");
     }
@@ -14,13 +19,14 @@ public class Engine {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         System.out.println("0 - Exit");
         System.out.printf("Your choice: ");
     }
 
     static int choiceGame() {
         String inputFromKeyboard = "";
-        while (!inputFromKeyboard.matches("[0-4]")) {
+        while (!inputFromKeyboard.matches("[0-5]")) {
             inputFromKeyboard = readFromKeyboard.nextLine();
         }
 //        readFromKeyboard.close();
@@ -32,6 +38,37 @@ public class Engine {
         String answer;
         answer = readFromKeyboard.nextLine();
         return answer;
+    }
+
+    public static void checkAnswerNumeric(int rightAnswer, int userAnswer) {
+        String nameUser = getNameUser();
+        if (!(userAnswer == rightAnswer)) {
+            System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
+                    + rightAnswer + "\'.");
+            System.out.println("Let's try again," + nameUser);
+            System.exit(0);
+        } else {
+            System.out.println("Correct!");
+        }
+    }
+
+    public static void checkAnswerString(String rightAnswer, String userAnswer) {
+        String nameUser = getNameUser();
+        if (!userAnswer.equalsIgnoreCase(rightAnswer)) {
+            System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
+                    + rightAnswer + "\'.");
+            System.out.println("Let's try again," + nameUser);
+            System.exit(0);
+        } else {
+            System.out.println("Correct!");
+        }
+    }
+
+    public static int[] randomGenerator(int range) {
+        int[] dim = new int[2];
+        dim[0] = 1 + numericsRandom.nextInt(range);
+        dim[1] = 1 + numericsRandom.nextInt(range);
+        return dim;
     }
 
 }

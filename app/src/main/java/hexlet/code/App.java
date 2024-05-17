@@ -7,6 +7,7 @@ import static hexlet.code.Engine.printGameList;
 import static hexlet.code.games.Calc.gameCalc;
 import static hexlet.code.games.Even.gameEven;
 import static hexlet.code.games.GCD.gameGCD;
+import static hexlet.code.games.Progression.gameProgression;
 
 public class App {
     public static void main(String[] args) {
@@ -29,6 +30,10 @@ public class App {
         if (choiceKey == 4) {
             askNamePlayer();
             gameGCD();
+        }
+        if (choiceKey == 5) {
+            askNamePlayer();
+            gameProgression();
         }
     }
 }

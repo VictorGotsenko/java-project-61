@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import static hexlet.code.Cli.getNameUser;
+import static hexlet.code.Engine.checkAnswerString;
 import static hexlet.code.Engine.getAnswer;
 
 public class Even {
@@ -8,38 +9,18 @@ public class Even {
         String userAnswer;
         String nameUser = getNameUser();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+// Question No 1
         System.out.println("Question: 15");
         System.out.printf("Your answer: ");
-        userAnswer = getAnswer();
-        if (!userAnswer.equalsIgnoreCase("no")) {
-            System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.");
-            System.out.println("Let's try again," + nameUser);
-            return;
-        } else {
-            System.out.println("Correct!");
-        }
-//  Next question
+        checkAnswerString("no", getAnswer());
+// Question No 2
         System.out.println("Question: 6");
         System.out.printf("Your answer: ");
-        userAnswer = getAnswer();
-        if (!userAnswer.equalsIgnoreCase("yes")) {
-            System.out.println("'no' is wrong answer ;(. Correct answer was 'yes'.");
-            System.out.println("Let's try again," + nameUser);
-            return;
-        } else {
-            System.out.println("Correct!");
-        }
-// Next question
+        checkAnswerString("yes", getAnswer());
+// Question No 3
         System.out.println("Question: 7");
         System.out.printf("Your answer: ");
-        userAnswer = getAnswer();
-        if (!userAnswer.equalsIgnoreCase("no")) {
-            System.out.println("'yes' is wrong answer ;(. Correct answer was 'no'.");
-            System.out.println("Let's try again," + nameUser);
-            return;
-        } else {
-            System.out.println("Correct!");
-        }
+        checkAnswerString("no", getAnswer());
         System.out.println("Congratulations, " + nameUser + "!");
     }
 }
