@@ -9,24 +9,31 @@ public class Calc {
     public static void gameCalc() {
         String nameUser = getNameUser();
         int rangeGenerateNumbers = 10;
+        int maxQuestions = 3;
+        String operation = " * ";
+        int result = 0;
 
         System.out.println("What is the result of the expression?");
-// Question No 1
         int[] dim = randomGenerator(rangeGenerateNumbers);
-        System.out.println("Question: " + dim[0] + " * " + dim[1]);
-        System.out.print("Your answer: ");
-        checkAnswerNumeric((dim[0] * dim[1]), Integer.parseInt(getAnswer()));
-// Question No 2
-        dim = randomGenerator(rangeGenerateNumbers);
-        System.out.println("Question: " + dim[0] + " + " + dim[1]);
-        System.out.print("Your answer: ");
-        checkAnswerNumeric((dim[0] + dim[1]), Integer.parseInt(getAnswer()));
-
-// Question No 3
-        dim = randomGenerator(rangeGenerateNumbers);
-        System.out.println("Question: " + dim[0] + " - " + dim[1]);
-        System.out.print("Your answer: ");
-        checkAnswerNumeric((dim[0] - dim[1]), Integer.parseInt(getAnswer()));
+        int q = 1;
+        while (q <= maxQuestions) {
+            dim = randomGenerator(rangeGenerateNumbers);
+            if (q == 1) {
+                result = dim[0] * dim[1];
+            }
+            if (q == 2) {
+                operation = " + ";
+                result = dim[0] + dim[1];
+            }
+            if (q == 3) {
+                operation = " - ";
+                result = dim[0] - dim[1];
+            }
+            System.out.println("Question: " + dim[0] + operation + dim[1]);
+            System.out.print("Your answer: ");
+            checkAnswerNumeric(result, Integer.parseInt(getAnswer()));
+            q += 1;
+        }
         System.out.println("Congratulations, " + nameUser + "!");
     }
 }

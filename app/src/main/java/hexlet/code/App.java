@@ -7,6 +7,7 @@ import static hexlet.code.Engine.printGameList;
 import static hexlet.code.games.Calc.gameCalc;
 import static hexlet.code.games.Even.gameEven;
 import static hexlet.code.games.GCD.gameGCD;
+import static hexlet.code.games.Prime.gamePrime;
 import static hexlet.code.games.Progression.gameProgression;
 
 public class App {
@@ -34,6 +35,10 @@ public class App {
         if (choiceKey == 5) {
             askNamePlayer();
             gameProgression();
+        }
+        if (choiceKey == 6) {
+            askNamePlayer();
+            gamePrime();
         }
     }
 }

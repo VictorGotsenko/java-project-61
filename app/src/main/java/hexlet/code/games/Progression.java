@@ -10,29 +10,23 @@ public class Progression {
     public static void gameProgression() {
         String nameUser = getNameUser();
         int scopeProgression = 10;
+        int maxQuestions = 3;
 
         System.out.println("What number is missing in the progression?");
-// Question No 1
+
         int[] dimRndInitialStep = randomGenerator(scopeProgression);
         int[] dimProgression = generateProgression(dimRndInitialStep, scopeProgression);
-        System.out.print("Question: ");
-        int maskN = printProgression(dimProgression);
-        System.out.print("Your answer: ");
-        checkAnswerNumeric(maskN, Integer.parseInt(getAnswer()));
-// Question No 2
-        dimRndInitialStep = randomGenerator(scopeProgression);
-        dimProgression = generateProgression(dimRndInitialStep, scopeProgression);
-        System.out.print("Question: ");
-        maskN = printProgression(dimProgression);
-        System.out.print("Your answer: ");
-        checkAnswerNumeric(maskN, Integer.parseInt(getAnswer()));
-// Question No 3
-        dimRndInitialStep = randomGenerator(scopeProgression);
-        dimProgression = generateProgression(dimRndInitialStep, scopeProgression);
-        System.out.print("Question: ");
-        maskN = printProgression(dimProgression);
-        System.out.print("Your answer: ");
-        checkAnswerNumeric(maskN, Integer.parseInt(getAnswer()));
+        int maskN = 0;
+        int q = 1;
+        while (q <= maxQuestions) {
+            dimRndInitialStep = randomGenerator(scopeProgression);
+            dimProgression = generateProgression(dimRndInitialStep, scopeProgression);
+            System.out.print("Question: ");
+            maskN = printProgression(dimProgression);
+            System.out.print("Your answer: ");
+            checkAnswerNumeric(maskN, Integer.parseInt(getAnswer()));
+            q += 1;
+        }
         System.out.println("Congratulations, " + nameUser + "!");
     }
 

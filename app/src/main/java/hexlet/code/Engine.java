@@ -20,13 +20,14 @@ public class Engine {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.printf("Your choice: ");
     }
 
     static int choiceGame() {
         String inputFromKeyboard = "";
-        while (!inputFromKeyboard.matches("[0-5]")) {
+        while (!inputFromKeyboard.matches("[0-6]")) {
             inputFromKeyboard = readFromKeyboard.nextLine();
         }
 //        readFromKeyboard.close();
@@ -52,11 +53,17 @@ public class Engine {
         }
     }
 
-    public static void checkAnswerString(String rightAnswer, String userAnswer) {
+    public static void checkAnswerBoolean(boolean rightAnswer, String userAnswer) {
         String nameUser = getNameUser();
-        if (!userAnswer.equalsIgnoreCase(rightAnswer)) {
+        boolean userAnswerBool = false;
+        String rightAnswerTxt = rightAnswer ? "yes" : "no";
+        if (userAnswer.equalsIgnoreCase("yes")) {
+            userAnswerBool = true;
+        }
+
+        if (!userAnswerBool == rightAnswer) {
             System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
-                    + rightAnswer + "\'.");
+                    + rightAnswerTxt + "\'.");
             System.out.println("Let's try again," + nameUser);
             System.exit(0);
         } else {
