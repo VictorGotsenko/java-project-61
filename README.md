@@ -6,3 +6,4 @@
 <h3 align="left">You can see the game "Calc" asciinema-recording at: https://asciinema.org/a/IdYy2hCVk2ePnvxvFMn1o3n1q</h3>
 <h3 align="left">You can see the game "GCD" asciinema-recording at: https://asciinema.org/a/3lCmjopgR720kkZ4f8R9pFE2s</h3>
 <h3 align="left">You can see the game "Progression" asciinema-recording at: https://asciinema.org/a/EDRvGPqyNqdrd9e9H0y3p14jR</h3>
+<h3 align="left">You can see the game "Prime" asciinema-recording at: https://asciinema.org/a/Iki92IstbrHwvL2DRJTaZ5YNn</h3>
