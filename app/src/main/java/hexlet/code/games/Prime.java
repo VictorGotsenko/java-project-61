@@ -1,33 +1,31 @@
 package hexlet.code.games;
 
-import static hexlet.code.Cli.getNameUser;
-import static hexlet.code.Engine.checkAnswerBoolean;
-import static hexlet.code.Engine.getAnswer;
-import static hexlet.code.Engine.numericsRandom;
+import static hexlet.code.Engine.playGame;
+import static hexlet.code.Util.numericsRandom;
 
 public class Prime {
     public static void gamePrime() {
-        String nameUser = getNameUser();
         int scopeDimention = 200;
-        int maxQuestions = 3;
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        int q = 1;
-        while (q <= maxQuestions) {
-            int maskNumber = 1 + numericsRandom.nextInt(scopeDimention);
-            System.out.println("Question: " + maskNumber);
-            System.out.print("Your answer: ");
-            checkAnswerBoolean(checkIsPrime(maskNumber), getAnswer());
-            q += 1;
+        String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[] gameQuestions = new String[3];
+        String[] gameAnswers = new String[3];
+        int guessNumber;
+        int i = 0;
+        while (i < gameQuestions.length) {
+            guessNumber = 1 + numericsRandom.nextInt(scopeDimention);
+            gameQuestions[i] = String.valueOf(guessNumber);
+            gameAnswers[i] = checkIsPrime(guessNumber);
+            i += 1;
         }
-        System.out.println("Congratulations, " + nameUser + "!");
+        playGame(rule, gameQuestions, gameAnswers);
     }
 
-    static boolean checkIsPrime(int a) {
+    static String  checkIsPrime(int a) {
         for (int i = 2; i < a; i++) {
             if ((a % i) == 0) {
-                return false;
+                return "no";
             }
         }
-        return true;
+        return "yes";
     }
 }

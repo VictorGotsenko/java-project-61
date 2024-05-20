@@ -1,33 +1,30 @@
 package hexlet.code.games;
 
-import static hexlet.code.Cli.getNameUser;
-import static hexlet.code.Engine.checkAnswerBoolean;
-import static hexlet.code.Engine.getAnswer;
-import static hexlet.code.Engine.numericsRandom;
+import static hexlet.code.Engine.playGame;
+import static hexlet.code.Util.numericsRandom;
 
 public class Even {
     public static void gameEven() {
-        String nameUser = getNameUser();
-        int maxQuestions = 3;
         int rangeGenerateNumbers = 10;
+        String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[] gameQuestions = new String[3];
+        String[] gameAnswers = new String[3];
         int guessNumber;
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        int q = 1;
-        while (q <= maxQuestions) {
+        int i = 0;
+        while (i < gameQuestions.length) {
             guessNumber = 1 + numericsRandom.nextInt(rangeGenerateNumbers);
-            System.out.println("Question: " + guessNumber);
-            System.out.print("Your answer: ");
-            checkAnswerBoolean(checkEven(guessNumber), getAnswer());
-            q += 1;
+            gameQuestions[i] = String.valueOf(guessNumber);
+            gameAnswers[i] = checkEven(guessNumber);
+            i += 1;
         }
-        System.out.println("Congratulations, " + nameUser + "!");
+        playGame(rule, gameQuestions, gameAnswers);
     }
 
-    static boolean checkEven(int a) {
+    static String checkEven(int a) {
         if ((a % 2) == 0) {
-            return true;
+            return "yes";
         }
-        return false;
+        return "no";
     }
 }

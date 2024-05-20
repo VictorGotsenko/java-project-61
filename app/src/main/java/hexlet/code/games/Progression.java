@@ -1,56 +1,46 @@
 package hexlet.code.games;
 
-import static hexlet.code.Cli.getNameUser;
-import static hexlet.code.Engine.checkAnswerNumeric;
-import static hexlet.code.Engine.getAnswer;
-import static hexlet.code.Engine.numericsRandom;
-import static hexlet.code.Engine.randomGenerator;
+import static hexlet.code.Engine.playGame;
+import static hexlet.code.Util.numericsRandom;
+import static hexlet.code.Util.randomGenerator;
 
 public class Progression {
     public static void gameProgression() {
-        String nameUser = getNameUser();
         int scopeProgression = 10;
-        int maxQuestions = 3;
+        String rule = "What number is missing in the progression?";
+        String[] gameQuestions = new String[]{"", "", ""};
+        String[] gameAnswers = new String[3];
 
-        System.out.println("What number is missing in the progression?");
-
-        int[] dimRndInitialStep = randomGenerator(scopeProgression);
-        int[] dimProgression = generateProgression(dimRndInitialStep, scopeProgression);
-        int maskN = 0;
-        int q = 1;
-        while (q <= maxQuestions) {
-            dimRndInitialStep = randomGenerator(scopeProgression);
-            dimProgression = generateProgression(dimRndInitialStep, scopeProgression);
-            System.out.print("Question: ");
-            maskN = printProgression(dimProgression);
-            System.out.print("Your answer: ");
-            checkAnswerNumeric(maskN, Integer.parseInt(getAnswer()));
-            q += 1;
+        int[] generateInitialValue;
+        int[] dimProgression;
+        int i = 0;
+        while (i < gameQuestions.length) {
+            generateInitialValue = randomGenerator(scopeProgression);
+            // сгенерировать последовательность
+            dimProgression = generateProgression(generateInitialValue, scopeProgression);
+            // загадать какой член будет ..
+            int maskNumber = 1 + numericsRandom.nextInt(dimProgression.length);
+            // сделать строчку
+            for (int j = 0; j < dimProgression.length; j++) {
+                if (j == maskNumber) {
+                    gameQuestions[i] = gameQuestions[i] + ".. ";
+                    gameAnswers[i] = String.valueOf(dimProgression[j]);
+                } else {
+                    gameQuestions[i] = gameQuestions[i] + dimProgression[j] + " ";
+                }
+            }
+            i += 1;
         }
-        System.out.println("Congratulations, " + nameUser + "!");
+        playGame(rule, gameQuestions, gameAnswers);
     }
 
     static int[] generateProgression(int[] dimRnd, int scope) {
+        // сгенерировать последовательность
         int[] dim = new int[scope];
         dim[0] = dimRnd[0];
         for (int i = 1; i < scope; i++) {
             dim[i] = dim[i - 1] + dimRnd[1];
         }
         return dim;
-    }
-
-    static int printProgression(int[] dimProgression) {
-        int guessNumber = 0;
-        int maskNumber = 1 + numericsRandom.nextInt(dimProgression.length);
-        for (int i = 0; i < dimProgression.length; i++) {
-            if (i == maskNumber) {
-                System.out.print(".. ");
-                guessNumber = dimProgression[i];
-            } else {
-                System.out.print(dimProgression[i] + " ");
-            }
-        }
-        System.out.println();
-        return guessNumber;
     }
 }

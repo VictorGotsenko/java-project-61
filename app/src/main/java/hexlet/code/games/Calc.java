@@ -1,39 +1,33 @@
 package hexlet.code.games;
 
-import static hexlet.code.Cli.getNameUser;
-import static hexlet.code.Engine.checkAnswerNumeric;
-import static hexlet.code.Engine.getAnswer;
-import static hexlet.code.Engine.randomGenerator;
+import static hexlet.code.Engine.playGame;
+import static hexlet.code.Util.randomGenerator;
 
 public class Calc {
     public static void gameCalc() {
-        String nameUser = getNameUser();
         int rangeGenerateNumbers = 10;
-        int maxQuestions = 3;
-        String operation = " * ";
-        int result = 0;
+        String rule = "What is the result of the expression?";
+        String[] gameQuestions = new String[3];
+        String[] gameAnswers = new String[3];
 
-        System.out.println("What is the result of the expression?");
-        int[] dim = randomGenerator(rangeGenerateNumbers);
-        int q = 1;
-        while (q <= maxQuestions) {
-            dim = randomGenerator(rangeGenerateNumbers);
-            if (q == 1) {
-                result = dim[0] * dim[1];
+        int[] rangomDimValue;
+        int i = 0;
+        while (i < gameQuestions.length) {
+            rangomDimValue = randomGenerator(rangeGenerateNumbers);
+            if (i == 0) {
+                gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " * " + String.valueOf(rangomDimValue[1]);
+                gameAnswers[i] = String.valueOf(rangomDimValue[0] * rangomDimValue[1]);
             }
-            if (q == 2) {
-                operation = " + ";
-                result = dim[0] + dim[1];
+            if (i == 1) {
+                gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " + " + String.valueOf(rangomDimValue[1]);
+                gameAnswers[i] = String.valueOf(rangomDimValue[0] + rangomDimValue[1]);
             }
-            if (q == 3) {
-                operation = " - ";
-                result = dim[0] - dim[1];
+            if (i == 2) {
+                gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " - " + String.valueOf(rangomDimValue[1]);
+                gameAnswers[i] = String.valueOf(rangomDimValue[0] - rangomDimValue[1]);
             }
-            System.out.println("Question: " + dim[0] + operation + dim[1]);
-            System.out.print("Your answer: ");
-            checkAnswerNumeric(result, Integer.parseInt(getAnswer()));
-            q += 1;
+            i += 1;
         }
-        System.out.println("Congratulations, " + nameUser + "!");
+        playGame(rule, gameQuestions, gameAnswers);
     }
 }
