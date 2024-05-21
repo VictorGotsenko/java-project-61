@@ -1,6 +1,5 @@
 package hexlet.code;
 
-//import  hexlet.code.*;
 import static hexlet.code.Cli.askNamePlayer;
 import static hexlet.code.Engine.readFromKeyboard;
 import static hexlet.code.games.Calc.gameCalc;
