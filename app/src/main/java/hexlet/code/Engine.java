@@ -19,7 +19,7 @@ public class Engine {
             if (!gameAnswers[i].equalsIgnoreCase(userAnswer)) {
                 System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
                         + gameAnswers[i] + "\'.");
-                System.out.println("Let's try again, " + nameUser+"!");
+                System.out.println("Let's try again, " + nameUser + "!");
                 System.exit(0);
             } else {
                 System.out.println("Correct!");
