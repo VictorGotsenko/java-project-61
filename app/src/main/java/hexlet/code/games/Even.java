@@ -6,9 +6,10 @@ import static hexlet.code.Util.randomGeneratorNum;
 public class Even {
     public static void gameEven() {
         final int rangeGenerateNumbers = 10;
+        final int numberGameQuestions = 3;
         String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        final String[] gameQuestions = new String[3];
-        final String[] gameAnswers = new String[3];
+        String[] gameQuestions = new String[numberGameQuestions];
+        String[] gameAnswers = new String[numberGameQuestions];
         int guessNumber;
 
         int i = 0;

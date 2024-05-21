@@ -5,10 +5,11 @@ import static hexlet.code.Util.randomGeneratorArray;
 
 public class Calc {
     public static void gameCalc() {
-        int rangeGenerateNumbers = 10;
+        final int rangeGenerateNumbers = 10;
+        final int numberGameQuestions = 3;
         String rule = "What is the result of the expression?";
-        String[] gameQuestions = new String[3];
-        String[] gameAnswers = new String[3];
+        String[] gameQuestions = new String[numberGameQuestions];
+        String[] gameAnswers = new String[numberGameQuestions];
 
         int[] rangomDimValue;
         int i = 0;

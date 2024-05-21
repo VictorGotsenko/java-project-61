@@ -1,7 +1,8 @@
 package hexlet.code;
 
+import java.util.Scanner;
+
 import static hexlet.code.Cli.askNamePlayer;
-import static hexlet.code.Engine.readFromKeyboard;
 import static hexlet.code.games.Calc.gameCalc;
 import static hexlet.code.games.Even.gameEven;
 import static hexlet.code.games.GCD.gameGCD;
@@ -45,11 +46,11 @@ public class App {
     }
 
     static int choiceGame() {
+        Scanner readFromKeyboard = new Scanner(System.in);
         String inputFromKeyboard = "";
         while (!inputFromKeyboard.matches("[0-6]")) {
             inputFromKeyboard = readFromKeyboard.nextLine();
         }
-        int result = Integer.parseInt(inputFromKeyboard);
-        return result;
+        return Integer.parseInt(inputFromKeyboard);
     }
 }

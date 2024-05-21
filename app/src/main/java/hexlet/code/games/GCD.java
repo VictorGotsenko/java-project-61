@@ -5,10 +5,11 @@ import static hexlet.code.Util.randomGeneratorArray;
 
 public class GCD {
     public static void gameGCD() {
-        int rangeGenerateNumbers = 100;
+        final int rangeGenerateNumbers = 100;
+        final int numberGameQuestions = 3;
         String rule = "Find the greatest common divisor of given numbers.";
-        String[] gameQuestions = new String[3];
-        String[] gameAnswers = new String[3];
+        String[] gameQuestions = new String[numberGameQuestions];
+        String[] gameAnswers = new String[numberGameQuestions];
 
         int[] rangomDimValue;
         int i = 0;

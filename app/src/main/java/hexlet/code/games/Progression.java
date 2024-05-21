@@ -6,10 +6,11 @@ import static hexlet.code.Util.randomGeneratorNum;
 
 public class Progression {
     public static void gameProgression() {
-        int scopeProgression = 10;
+        final int scopeProgression = 10;
+        final int numberGameQuestions = 3;
         String rule = "What number is missing in the progression?";
-        String[] gameQuestions = new String[3];
-        String[] gameAnswers = new String[3];
+        String[] gameQuestions = new String[numberGameQuestions];
+        String[] gameAnswers = new String[numberGameQuestions];
         int[] generateInitialValue;
         int[] dimProgression;
         int i = 0;

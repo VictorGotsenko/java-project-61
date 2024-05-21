@@ -5,10 +5,11 @@ import static hexlet.code.Util.randomGeneratorNum;
 
 public class Prime {
     public static void gamePrime() {
-        int scopeDimention = 200;
+        final int scopeDimention = 200;
+        final int numberGameQuestions = 3;
         String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[] gameQuestions = new String[3];
-        String[] gameAnswers = new String[3];
+        String[] gameQuestions = new String[numberGameQuestions];
+        String[] gameAnswers = new String[numberGameQuestions];
         int guessNumber;
         int i = 0;
         while (i < gameQuestions.length) {

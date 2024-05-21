@@ -5,9 +5,8 @@ import java.util.Scanner;
 import static hexlet.code.Cli.askNamePlayer;
 
 public class Engine {
-    static Scanner readFromKeyboard = new Scanner(System.in);
-
     public static void playGame(String rule, String[] gameQuestions, String[] gameAnswers) {
+        Scanner readFromKeyboard = new Scanner(System.in);
         String nameUser = askNamePlayer();
         System.out.println(rule);
         int i = 0;
