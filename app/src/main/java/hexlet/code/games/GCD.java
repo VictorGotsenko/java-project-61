@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.Util.randomGenerator;
+import static hexlet.code.Util.randomGeneratorArray;
 
 public class GCD {
     public static void gameGCD() {
@@ -13,7 +13,7 @@ public class GCD {
         int[] rangomDimValue;
         int i = 0;
         while (i < gameQuestions.length) {
-            rangomDimValue = randomGenerator(rangeGenerateNumbers);
+            rangomDimValue = randomGeneratorArray(rangeGenerateNumbers);
             gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " " + String.valueOf(rangomDimValue[1]);
             gameAnswers[i] = String.valueOf(findCDG(rangomDimValue[0], rangomDimValue[1]));
             i += 1;

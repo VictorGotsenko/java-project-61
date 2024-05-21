@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.Util.numericsRandom;
+import static hexlet.code.Util.randomGeneratorNum;
 
 public class Prime {
     public static void gamePrime() {
@@ -12,7 +12,7 @@ public class Prime {
         int guessNumber;
         int i = 0;
         while (i < gameQuestions.length) {
-            guessNumber = 1 + numericsRandom.nextInt(scopeDimention);
+            guessNumber = randomGeneratorNum(scopeDimention);
             gameQuestions[i] = String.valueOf(guessNumber);
             gameAnswers[i] = checkIsPrime(guessNumber);
             i += 1;

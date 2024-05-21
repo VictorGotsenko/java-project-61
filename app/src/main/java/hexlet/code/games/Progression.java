@@ -1,8 +1,8 @@
 package hexlet.code.games;
 
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.Util.numericsRandom;
-import static hexlet.code.Util.randomGenerator;
+import static hexlet.code.Util.randomGeneratorArray;
+import static hexlet.code.Util.randomGeneratorNum;
 
 public class Progression {
     public static void gameProgression() {
@@ -15,11 +15,11 @@ public class Progression {
         int i = 0;
         while (i < gameQuestions.length) {
             // сгенерировать начальные значения
-            generateInitialValue = randomGenerator(scopeProgression);
+            generateInitialValue = randomGeneratorArray(scopeProgression);
             // сгенерировать последовательность
             dimProgression = generateProgression(generateInitialValue, scopeProgression);
             // загадать какой член будет скрыт
-            int hiddenIndex = numericsRandom.nextInt(scopeProgression);
+            int hiddenIndex = randomGeneratorNum(scopeProgression);
             // если скрыт первый член
             if (hiddenIndex == 0) {
                 gameQuestions[i] = ".. ";
