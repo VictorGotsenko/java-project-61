@@ -11,6 +11,13 @@ import static hexlet.code.games.Progression.gameProgression;
 
 public class App {
     public static void main(String[] args) {
+
+        final int gameEven = 2;
+        final int gameCalc = 3;
+        final int gameGCD = 4;
+        final int gameCProgression = 5;
+        final int gamePrime = 6;
+
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -28,19 +35,19 @@ public class App {
         if (choiceKey == 1) {
             askNamePlayer();
         }
-        if (choiceKey == 2) {
+        if (choiceKey == gameEven) {
             gameEven();
         }
-        if (choiceKey == 3) {
+        if (choiceKey == gameCalc) {
             gameCalc();
         }
-        if (choiceKey == 4) {
+        if (choiceKey == gameGCD) {
             gameGCD();
         }
-        if (choiceKey == 5) {
+        if (choiceKey == gameCProgression) {
             gameProgression();
         }
-        if (choiceKey == 6) {
+        if (choiceKey == gamePrime) {
             gamePrime();
         }
     }
