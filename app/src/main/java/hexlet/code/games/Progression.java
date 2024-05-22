@@ -6,16 +6,16 @@ import static hexlet.code.Util.randomGeneratorNum;
 
 public class Progression {
     public static void gameProgression() {
-        final int scopeProgression = 10;
+        final int scopeProgression = 9;
         final int numberGameQuestions = 3;
         String rule = "What number is missing in the progression?";
-        String[] gameQuestions = new String[]{"..", "..", ".."};
+        String[] gameQuestions = new String[numberGameQuestions];
         String[] gameAnswers = new String[numberGameQuestions];
         int[] generateInitialValue;
         int[] dimProgression;
         int i = 0;
         while (i < gameQuestions.length) {
-            // сгенерировать начальные значения
+            // сгенерировать начальные значения для построения прогрессии
             generateInitialValue = randomGeneratorArray(scopeProgression);
             // сгенерировать последовательность
             dimProgression = generateProgression(generateInitialValue, scopeProgression);
