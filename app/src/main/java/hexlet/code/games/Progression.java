@@ -6,10 +6,10 @@ import static hexlet.code.Util.randomGeneratorNum;
 
 public class Progression {
     public static void gameProgression() {
-        final int scopeProgression = 9;
+        final int scopeProgression = 10;
         final int numberGameQuestions = 3;
         String rule = "What number is missing in the progression?";
-        String[] gameQuestions = new String[numberGameQuestions];
+        String[] gameQuestions = new String[]{"..", "..", ".."};
         String[] gameAnswers = new String[numberGameQuestions];
         int[] generateInitialValue;
         int[] dimProgression;
@@ -21,22 +21,9 @@ public class Progression {
             dimProgression = generateProgression(generateInitialValue, scopeProgression);
             // загадать какой член будет скрыт
             int hiddenIndex = randomGeneratorNum(scopeProgression);
-            // если скрыт первый член
-            if (hiddenIndex == 0) {
-                gameQuestions[i] = ".. ";
-                gameAnswers[i] = String.valueOf(dimProgression[0]);
-            } else {
-                gameQuestions[i] = String.valueOf(dimProgression[0]) + " ";
-            }
-             // сделать строчку
-            for (int j = 1; j < dimProgression.length; j++) {
-                if (j == hiddenIndex) {
-                    gameQuestions[i] = gameQuestions[i] + ".. ";
-                    gameAnswers[i] = String.valueOf(dimProgression[j]);
-                } else {
-                    gameQuestions[i] = gameQuestions[i] + dimProgression[j] + " ";
-                }
-            }
+            // сделать строчку
+            gameQuestions[i] = buildingString(dimProgression, hiddenIndex);
+            gameAnswers[i] = String.valueOf(dimProgression[hiddenIndex]);
             i += 1;
         }
         playGame(rule, gameQuestions, gameAnswers);
@@ -50,5 +37,23 @@ public class Progression {
             dim[i] = dim[i - 1] + dimRnd[1];
         }
         return dim;
+    }
+
+    static String buildingString(int[] dimProgression, int hiddenIndex) {
+        // прогрессия, ответ
+        String st = "..";
+        // если скрыт первый член
+        if (!(hiddenIndex == 0)) {
+            st = String.valueOf(dimProgression[0]) + " "; // первый член прогрессии
+        }
+        // сделать строчку
+        for (int j = 1; j < dimProgression.length; j++) {
+            if (j == hiddenIndex) {
+                st = st + ".. ";
+            } else {
+                st = st + dimProgression[j] + " ";
+            }
+        }
+        return st;
     }
 }
