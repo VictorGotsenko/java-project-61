@@ -1,59 +1,41 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.numberGameQuestions;
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.Util.randomGeneratorArray;
 import static hexlet.code.Util.randomGeneratorNum;
 
 public class Progression {
     public static void gameProgression() {
-        final int scopeProgression = 9;
-        final int numberGameQuestions = 3;
+        final int scopeProgression = 10;
+        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
         String rule = "What number is missing in the progression?";
-        String[] gameQuestions = new String[numberGameQuestions];
-        String[] gameAnswers = new String[numberGameQuestions];
-        int[] generateInitialValue;
-        int[] dimProgression;
-        int i = 0;
-        while (i < gameQuestions.length) {
-            // сгенерировать начальные значения для построения прогрессии
-            generateInitialValue = randomGeneratorArray(scopeProgression);
-            // сгенерировать последовательность
-            dimProgression = generateProgression(generateInitialValue, scopeProgression);
-            // загадать какой член будет скрыт
-            int hiddenIndex = randomGeneratorNum(scopeProgression);
-            // сделать строчку
-            gameQuestions[i] = buildingString(dimProgression, hiddenIndex);
-            gameAnswers[i] = String.valueOf(dimProgression[hiddenIndex]);
-            i += 1;
+
+        for (int i = 0; i < numberGameQuestions; i++) {
+            gameQuestsAnswers[i] = guessProgression(scopeProgression);
         }
-        playGame(rule, gameQuestions, gameAnswers);
+        playGame(rule, gameQuestsAnswers);
     }
 
-    static int[] generateProgression(int[] dimRnd, int scope) {
-        // сгенерировать последовательность
-        int[] dim = new int[scope];
-        dim[0] = dimRnd[0];
+    static String[] guessProgression(int scope) {
+        String[] makeQA = new String[]{"", ""};
+        int a = randomGeneratorNum(scope);    // begin value
+        int b = randomGeneratorNum(scope);    // delta
+        int hiddenIndex = randomGeneratorNum(scope);
+        // if the first member is hidden
+        if ((hiddenIndex - 1) == 0) {
+            makeQA[0] = ".. ";
+            makeQA[1] = String.valueOf(a);
+        } else {
+            makeQA[0] = String.valueOf(a) + " ";
+        }
         for (int i = 1; i < scope; i++) {
-            dim[i] = dim[i - 1] + dimRnd[1];
-        }
-        return dim;
-    }
-
-    static String buildingString(int[] dimProgression, int hiddenIndex) {
-        // прогрессия, ответ
-        String st = "..";
-        // если скрыт первый член
-        if (!(hiddenIndex == 0)) {
-            st = String.valueOf(dimProgression[0]) + " "; // первый член прогрессии
-        }
-        // сделать строчку
-        for (int j = 1; j < dimProgression.length; j++) {
-            if (j == hiddenIndex) {
-                st = st + ".. ";
-            } else {
-                st = st + dimProgression[j] + " ";
+            if ((hiddenIndex - 1) == i) {
+                makeQA[0] = makeQA[0] + ".. ";
+                makeQA[1] = String.valueOf(a + (i * b));
+                continue;
             }
+            makeQA[0] = makeQA[0] + String.valueOf(a + (i * b)) + " ";
         }
-        return st;
+        return makeQA;
     }
 }

@@ -1,25 +1,21 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.numberGameQuestions;
+import static hexlet.code.Engine.rangeGenerateNumbers;
 import static hexlet.code.Engine.playGame;
 import static hexlet.code.Util.randomGeneratorNum;
 
 public class Even {
     public static void gameEven() {
-        final int rangeGenerateNumbers = 10;
-        final int numberGameQuestions = 3;
+        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
         String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        String[] gameQuestions = new String[numberGameQuestions];
-        String[] gameAnswers = new String[numberGameQuestions];
         int guessNumber;
-
-        int i = 0;
-        while (i < gameQuestions.length) {
+        for (int i = 0; i < numberGameQuestions; i++) {
             guessNumber = randomGeneratorNum(rangeGenerateNumbers);
-            gameQuestions[i] = String.valueOf(guessNumber);
-            gameAnswers[i] = checkEven(guessNumber);
-            i += 1;
+            gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
+            gameQuestsAnswers[i][1] = checkEven(guessNumber);
         }
-        playGame(rule, gameQuestions, gameAnswers);
+        playGame(rule, gameQuestsAnswers);
     }
 
     static String checkEven(int a) {

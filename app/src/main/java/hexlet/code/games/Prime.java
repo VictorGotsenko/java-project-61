@@ -1,24 +1,21 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.numberGameQuestions;
 import static hexlet.code.Engine.playGame;
 import static hexlet.code.Util.randomGeneratorNum;
 
 public class Prime {
     public static void gamePrime() {
         final int scopeDimention = 200;
-        final int numberGameQuestions = 3;
+        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
+        int guessNumber = 0;
         String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[] gameQuestions = new String[numberGameQuestions];
-        String[] gameAnswers = new String[numberGameQuestions];
-        int guessNumber;
-        int i = 0;
-        while (i < gameQuestions.length) {
+        for (int i = 0; i < numberGameQuestions; i++) {
             guessNumber = randomGeneratorNum(scopeDimention);
-            gameQuestions[i] = String.valueOf(guessNumber);
-            gameAnswers[i] = checkIsPrime(guessNumber);
-            i += 1;
+            gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
+            gameQuestsAnswers[i][1] = checkIsPrime(guessNumber);
         }
-        playGame(rule, gameQuestions, gameAnswers);
+        playGame(rule, gameQuestsAnswers);
     }
 
     static String  checkIsPrime(int a) {

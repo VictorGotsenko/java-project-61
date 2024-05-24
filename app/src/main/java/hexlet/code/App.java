@@ -11,54 +11,55 @@ import static hexlet.code.games.Progression.gameProgression;
 
 public class App {
     public static void main(String[] args) {
-        final int gameEven = 2;
-        final int gameCalc = 3;
-        final int gameGCD = 4;
-        final int gameCProgression = 5;
-        final int gamePrime = 6;
         printListGame();
         int choiceKey = choiceGame();
-        if (choiceKey == 0) {
-            System.exit(0);
-        }
-        if (choiceKey == 1) {
-            askNamePlayer();
-        }
-        if (choiceKey == gameEven) {
-            gameEven();
-        }
-        if (choiceKey == gameCalc) {
-            gameCalc();
-        }
-        if (choiceKey == gameGCD) {
-            gameGCD();
-        }
-        if (choiceKey == gameCProgression) {
-            gameProgression();
-        }
-        if (choiceKey == gamePrime) {
-            gamePrime();
+        switch (choiceKey) {
+            case 0:
+                return;
+            case 1:
+                askNamePlayer();
+                break;
+            case 2:
+                gameEven();
+                break;
+            case 3:
+                gameCalc();
+                break;
+            case 4:
+                gameGCD();
+                break;
+            case 5:
+                gameProgression();
+                break;
+            case 6:
+                gamePrime();
+                break;
+            default:
+                break;
         }
     }
 
     static int choiceGame() {
         Scanner readFromKeyboard = new Scanner(System.in);
         String inputFromKeyboard = "";
-        while (!inputFromKeyboard.matches("[0-6]")) {
-            inputFromKeyboard = readFromKeyboard.nextLine();
+        inputFromKeyboard = readFromKeyboard.nextLine();
+        if (!inputFromKeyboard.matches("[0-6]")) {
+            System.out.printf("Input error! \nPlease enter numbers between 0-6. Was entered: %s", inputFromKeyboard);
+            System.out.println("");
         }
         return Integer.parseInt(inputFromKeyboard);
     }
 
     static void printListGame() {
-        System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet");
-        System.out.println("2 - Even");
-        System.out.println("3 - Calc");
-        System.out.println("4 - GCD");
-        System.out.println("5 - Progression");
-        System.out.println("6 - Prime");
-        System.out.println("0 - Exit");
-        System.out.print("Your choice: ");
+        System.out.print("Please enter the game number and press Enter.\n"
+                + "1 - Greet\n"
+                + "2 - Even\n"
+                + "3 - Calc\n"
+                + "4 - GCD\n"
+                + "5 - Progression\n"
+                + "6 - Prime\n"
+                + "0 - Exit\n"
+                + "Your choice: ");
+
     }
 }

@@ -1,25 +1,23 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.numberGameQuestions;
+import static hexlet.code.Engine.rangeGenerateNumbers;
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.Util.randomGeneratorArray;
+import static hexlet.code.Util.randomGeneratorNum;
 
 public class GCD {
     public static void gameGCD() {
-        final int rangeGenerateNumbers = 100;
-        final int numberGameQuestions = 3;
         String rule = "Find the greatest common divisor of given numbers.";
-        String[] gameQuestions = new String[numberGameQuestions];
-        String[] gameAnswers = new String[numberGameQuestions];
-
-        int[] rangomDimValue;
-        int i = 0;
-        while (i < gameQuestions.length) {
-            rangomDimValue = randomGeneratorArray(rangeGenerateNumbers);
-            gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " " + String.valueOf(rangomDimValue[1]);
-            gameAnswers[i] = String.valueOf(findCDG(rangomDimValue[0], rangomDimValue[1]));
-            i += 1;
+        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
+        int a = 0;
+        int b = 0;
+        for (int i = 0; i < numberGameQuestions; i++) {
+            a = randomGeneratorNum(rangeGenerateNumbers);
+            b = randomGeneratorNum(rangeGenerateNumbers);
+            gameQuestsAnswers[i][0] = String.valueOf(a) + " " + String.valueOf(b);
+            gameQuestsAnswers[i][1] = String.valueOf(findCDG(a, b));
         }
-        playGame(rule, gameQuestions, gameAnswers);
+        playGame(rule, gameQuestsAnswers);
     }
 
     public static int findCDG(int a, int b) {

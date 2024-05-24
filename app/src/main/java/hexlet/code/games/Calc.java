@@ -1,34 +1,41 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.numberGameQuestions;
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.Util.randomGeneratorArray;
+import static hexlet.code.Engine.rangeGenerateNumbers;
+import static hexlet.code.Util.randomGeneratorNum;
 
 public class Calc {
-    public static void gameCalc() {
-        final int rangeGenerateNumbers = 10;
-        final int numberGameQuestions = 3;
-        String rule = "What is the result of the expression?";
-        String[] gameQuestions = new String[numberGameQuestions];
-        String[] gameAnswers = new String[numberGameQuestions];
 
-        int[] rangomDimValue;
-        int i = 0;
-        while (i < gameQuestions.length) {
-            rangomDimValue = randomGeneratorArray(rangeGenerateNumbers);
-            if (i == 0) {
-                gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " * " + String.valueOf(rangomDimValue[1]);
-                gameAnswers[i] = String.valueOf(rangomDimValue[0] * rangomDimValue[1]);
-            }
-            if (i == 1) {
-                gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " + " + String.valueOf(rangomDimValue[1]);
-                gameAnswers[i] = String.valueOf(rangomDimValue[0] + rangomDimValue[1]);
-            }
-            if (i == 2) {
-                gameQuestions[i] = String.valueOf(rangomDimValue[0]) + " - " + String.valueOf(rangomDimValue[1]);
-                gameAnswers[i] = String.valueOf(rangomDimValue[0] - rangomDimValue[1]);
-            }
-            i += 1;
+    public static void gameCalc() {
+        String rule = "What is the result of the expression?";
+        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
+        for (int i = 0; i < numberGameQuestions; i++)  {
+            gameQuestsAnswers[i] = guessQuestion(rangeGenerateNumbers);
         }
-        playGame(rule, gameQuestions, gameAnswers);
+        playGame(rule, gameQuestsAnswers);
+    }
+
+    static String[] guessQuestion(int range) {
+        String[] guessQA = new String[2];
+        int a = randomGeneratorNum(range);
+        int b = randomGeneratorNum(range);
+        switch (randomGeneratorNum(3)) {
+            case 1:
+                guessQA[0] = String.valueOf(a) + " + " + String.valueOf(b);
+                guessQA[1] = String.valueOf(a + b);
+                break;
+            case 2:
+                guessQA[0] = String.valueOf(a) + " - " + String.valueOf(b);
+                guessQA[1] = String.valueOf(a - b);
+                break;
+            case 3:
+                guessQA[0] = String.valueOf(a) + " * " + String.valueOf(b);
+                guessQA[1] = String.valueOf(a * b);
+                break;
+            default:
+                break;
+        }
+        return guessQA;
     }
 }
