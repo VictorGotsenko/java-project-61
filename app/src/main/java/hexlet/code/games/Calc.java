@@ -19,9 +19,10 @@ public class Calc {
 
     static String[] guessQuestion(int range) {
         String[] guessQA = new String[2];
+        final int countMathOperators = 3;
         int a = randomGeneratorNum(range);
         int b = randomGeneratorNum(range);
-        switch (randomGeneratorNum(3)) {
+        switch (randomGeneratorNum(countMathOperators)) {
             case 1:
                 guessQA[0] = String.valueOf(a) + " + " + String.valueOf(b);
                 guessQA[1] = String.valueOf(a + b);
