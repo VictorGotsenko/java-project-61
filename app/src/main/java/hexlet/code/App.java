@@ -3,6 +3,10 @@ package hexlet.code;
 import java.util.Scanner;
 
 import static hexlet.code.Cli.askNamePlayer;
+import static hexlet.code.Engine.FIVE;
+import static hexlet.code.Engine.FOUR;
+import static hexlet.code.Engine.SIX;
+import static hexlet.code.Engine.THREE;
 import static hexlet.code.games.Calc.gameCalc;
 import static hexlet.code.games.Even.gameEven;
 import static hexlet.code.games.GCD.gameGCD;
@@ -22,16 +26,16 @@ public class App {
             case 2:
                 gameEven();
                 break;
-            case 3:
+            case THREE:
                 gameCalc();
                 break;
-            case 4:
+            case FOUR:
                 gameGCD();
                 break;
-            case 5:
+            case FIVE:
                 gameProgression();
                 break;
-            case 6:
+            case SIX:
                 gamePrime();
                 break;
             default:

@@ -1,16 +1,16 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.numberGameQuestions;
+import static hexlet.code.Engine.NUMBER_GAME_QUESTIONS;
 import static hexlet.code.Engine.playGame;
 import static hexlet.code.Util.randomGeneratorNum;
 
 public class Prime {
     public static void gamePrime() {
         final int scopeDimention = 200;
-        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
+        String[][] gameQuestsAnswers = new String[NUMBER_GAME_QUESTIONS][2];
         int guessNumber = 0;
         String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        for (int i = 0; i < numberGameQuestions; i++) {
+        for (int i = 0; i < NUMBER_GAME_QUESTIONS; i++) {
             guessNumber = randomGeneratorNum(scopeDimention);
             gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
             gameQuestsAnswers[i][1] = checkIsPrime(guessNumber);

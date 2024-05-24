@@ -1,16 +1,16 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.numberGameQuestions;
+import static hexlet.code.Engine.NUMBER_GAME_QUESTIONS;
 import static hexlet.code.Engine.playGame;
 import static hexlet.code.Util.randomGeneratorNum;
 
 public class Progression {
     public static void gameProgression() {
         final int scopeProgression = 10;
-        String[][] gameQuestsAnswers = new String[numberGameQuestions][2];
+        String[][] gameQuestsAnswers = new String[NUMBER_GAME_QUESTIONS][2];
         String rule = "What number is missing in the progression?";
 
-        for (int i = 0; i < numberGameQuestions; i++) {
+        for (int i = 0; i < NUMBER_GAME_QUESTIONS; i++) {
             gameQuestsAnswers[i] = guessProgression(scopeProgression);
         }
         playGame(rule, gameQuestsAnswers);
