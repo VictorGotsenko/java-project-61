@@ -3,10 +3,6 @@ package hexlet.code;
 import java.util.Scanner;
 
 import static hexlet.code.Cli.askNamePlayer;
-import static hexlet.code.Engine.FIVE;
-import static hexlet.code.Engine.FOUR;
-import static hexlet.code.Engine.SIX;
-import static hexlet.code.Engine.THREE;
 import static hexlet.code.games.Calc.gameCalc;
 import static hexlet.code.games.Even.gameEven;
 import static hexlet.code.games.GCD.gameGCD;
@@ -16,34 +12,21 @@ import static hexlet.code.games.Progression.gameProgression;
 public class App {
     public static void main(String[] args) {
         printListGame();
-        int choiceKey = choiceGame();
+        String choiceKey = choiceGame();
         switch (choiceKey) {
-            case 0:
+            case "1" -> askNamePlayer();
+            case "2" -> gameEven();
+            case "3" -> gameCalc();
+            case "4" -> gameGCD();
+            case "5" -> gameProgression();
+            case "6" -> gamePrime();
+            default -> {
                 return;
-            case 1:
-                askNamePlayer();
-                break;
-            case 2:
-                gameEven();
-                break;
-            case THREE:
-                gameCalc();
-                break;
-            case FOUR:
-                gameGCD();
-                break;
-            case FIVE:
-                gameProgression();
-                break;
-            case SIX:
-                gamePrime();
-                break;
-            default:
-                break;
+            }
         }
     }
 
-    static int choiceGame() {
+    static String choiceGame() {
         Scanner readFromKeyboard = new Scanner(System.in);
         String inputFromKeyboard = "";
         inputFromKeyboard = readFromKeyboard.nextLine();
@@ -51,7 +34,7 @@ public class App {
             System.out.printf("Input error! \nPlease enter numbers between 0-6. Was entered: %s", inputFromKeyboard);
             System.out.println("");
         }
-        return Integer.parseInt(inputFromKeyboard);
+        return inputFromKeyboard;
     }
 
     static void printListGame() {

@@ -13,17 +13,24 @@ public class Prime {
         for (int i = 0; i < NUMBER_GAME_QUESTIONS; i++) {
             guessNumber = randomGeneratorNum(scopeDimention);
             gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
-            gameQuestsAnswers[i][1] = checkIsPrime(guessNumber);
+            if (checkIsPrime(guessNumber)) {
+                gameQuestsAnswers[i][1] = "yes";
+            } else {
+                gameQuestsAnswers[i][1] = "no";
+            }
         }
         playGame(rule, gameQuestsAnswers);
     }
 
-    static String  checkIsPrime(int a) {
+    static boolean  checkIsPrime(int a) {
+        if (a <= 1) {    //Простое число — это натуральное число больше 1
+            return false;
+        }
         for (int i = 2; i < a; i++) {
             if ((a % i) == 0) {
-                return "no";
+                return false;
             }
         }
-        return "yes";
+        return true;
     }
 }

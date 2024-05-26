@@ -13,15 +13,19 @@ public class Even {
         for (int i = 0; i < NUMBER_GAME_QUESTIONS; i++) {
             guessNumber = randomGeneratorNum(RANGE_GENERATE_NUMBERS);
             gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
-            gameQuestsAnswers[i][1] = checkEven(guessNumber);
+            if (checkEven(guessNumber)) {
+                gameQuestsAnswers[i][1] = "yes";
+            } else {
+                gameQuestsAnswers[i][1] = "no";
+            }
         }
         playGame(rule, gameQuestsAnswers);
     }
 
-    static String checkEven(int a) {
+    static boolean checkEven(int a) {
         if ((a % 2) == 0) {
-            return "yes";
+            return true;
         }
-        return "no";
+        return false;
     }
 }
