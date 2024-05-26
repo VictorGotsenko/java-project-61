@@ -18,7 +18,8 @@ public class Calc {
             a = randomGeneratorNum(scopeGameNumbers);
             b = randomGeneratorNum(scopeGameNumbers);
             operation = randomGeneratorNum(mathOperations.length);
-            gameQuestsAnswers[i][0] = String.valueOf(a) + mathOperations[operation - 1] + String.valueOf(b);
+            gameQuestsAnswers[i][0] = String.valueOf(a) + " "
+                    + mathOperations[operation - 1] + " " + String.valueOf(b);
             gameQuestsAnswers[i][1] = calcAnswer(a, b, mathOperations[operation - 1]);
         }
         playGame(rule, gameQuestsAnswers);
