@@ -24,9 +24,9 @@ public class Progression {
 
             // Вычислю ответ, вытащу его из массива
             hiddenIndex = randomGeneratorNum(scopeProgression);
-            gameQuestsAnswers[i][1] = tmp[hiddenIndex];
+            gameQuestsAnswers[i][1] = tmp[hiddenIndex - 1];
             // подменив в нужном месте эленмент
-            tmp[hiddenIndex] = "..";
+            tmp[hiddenIndex - 1] = "..";
 
             // make string builder and convert progression to string
             StringBuilder builder = new StringBuilder();
