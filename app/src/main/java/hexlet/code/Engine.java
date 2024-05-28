@@ -20,7 +20,7 @@ public class Engine {
             if (!gameQuestsAnswers[i][1].equalsIgnoreCase(userAnswer)) {
                 System.out.printf("\'%s\' is wrong answer ;(. Correct answer was \'%s\'.\n",
                         userAnswer, gameQuestsAnswers[i][1]);
-                System.out.printf("Let's try again, %s !\n", nameUser);
+                System.out.printf("Let's try again, %s!\n", nameUser);
                 return;
             } else {
                 System.out.println("Correct!");
