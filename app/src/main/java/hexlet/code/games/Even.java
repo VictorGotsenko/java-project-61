@@ -13,11 +13,7 @@ public class Even {
         for (int i = 0; i < NUMBER_GAME_QUESTIONS; i++) {
             guessNumber = randomGeneratorNum(RANGE_GENERATE_NUMBERS);
             gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
-            if (checkEven(guessNumber)) {
-                gameQuestsAnswers[i][1] = "yes";
-            } else {
-                gameQuestsAnswers[i][1] = "no";
-            }
+            gameQuestsAnswers[i][1] = checkEven(guessNumber) ? "yes" : "no";
         }
         playGame(rule, gameQuestsAnswers);
     }

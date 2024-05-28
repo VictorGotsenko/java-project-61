@@ -20,27 +20,25 @@ public class Calc {
             operation = randomGeneratorNum(mathOperations.length);
             gameQuestsAnswers[i][0] = String.valueOf(a) + " "
                     + mathOperations[operation - 1] + " " + String.valueOf(b);
-            gameQuestsAnswers[i][1] = calcAnswer(a, b, mathOperations[operation - 1]);
+            gameQuestsAnswers[i][1] = Integer.toString(calcAnswer(a, b, mathOperations[operation - 1]));
         }
         playGame(rule, gameQuestsAnswers);
     }
 
-    static String calcAnswer(int a, int b, String operation) {
-        String answer = "";
+    static int calcAnswer(int a, int b, String operation) {
+        int answer = 0;
         switch (operation) {
             case "+" -> {
-                answer = Integer.toString(a + b);
+                answer = a + b;
             }
             case "-" -> {
-                answer = Integer.toString(a - b);
+                answer = a - b;
             }
             case "*" -> {
-                answer = Integer.toString(a * b);
+                answer = a * b;
             }
             default -> {
             }
-
-
         }
         return answer;
     }

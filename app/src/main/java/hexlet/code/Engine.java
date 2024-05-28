@@ -18,9 +18,9 @@ public class Engine {
             System.out.print("Your answer: ");
             userAnswer = readFromKeyboard.nextLine();
             if (!gameQuestsAnswers[i][1].equalsIgnoreCase(userAnswer)) {
-                System.out.println("\'" + userAnswer + "\' is wrong answer ;(. Correct answer was \'"
-                        + gameQuestsAnswers[i][1] + "\'.");
-                System.out.println("Let's try again, " + nameUser + "!");
+                System.out.printf("\'%s\' is wrong answer ;(. Correct answer was \'%s\'.\n",
+                        userAnswer, gameQuestsAnswers[i][1]);
+                System.out.printf("Let's try again, %s !\n", nameUser);
                 return;
             } else {
                 System.out.println("Correct!");

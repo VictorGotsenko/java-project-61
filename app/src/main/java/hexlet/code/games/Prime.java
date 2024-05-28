@@ -13,11 +13,7 @@ public class Prime {
         for (int i = 0; i < NUMBER_GAME_QUESTIONS; i++) {
             guessNumber = randomGeneratorNum(scopeDimention);
             gameQuestsAnswers[i][0] = String.valueOf(guessNumber);
-            if (checkIsPrime(guessNumber)) {
-                gameQuestsAnswers[i][1] = "yes";
-            } else {
-                gameQuestsAnswers[i][1] = "no";
-            }
+            gameQuestsAnswers[i][1] = checkIsPrime(guessNumber) ? "yes" : "no";
         }
         playGame(rule, gameQuestsAnswers);
     }
